@@ -24,20 +24,111 @@
       <img src="./images/logo.svg" alt="logo" class="logo"/>
       <div class="score-board">
         <p class="score-label">SCORE</p>
-        <p class="score-num">12</p>
+        <p class="score-num">0</p>
       </div>
     </header>
-    <div class="game">
+    <div class="game" id="game">
       <div class="bg">
-        <div class="g-btn paper"></div>
-        <div class="g-btn rock"></div>
-        <div class="g-btn scissors"></div>
+        <div class="g-btn paper" data-choose="paper" onclick="choose(event)"></div>
+        <div class="g-btn rock" data-choose="rock" onclick="choose(event)"></div>
+        <div class="g-btn scissors" data-choose="scissors" onclick="choose(event)"></div>
       </div>
+      <div class="result"></div>
     </div>
     <footer>
-      <div class="btn-rules">RULES</div>
+      <div class="btn btn-rules" onclick="showRules(event)">RULES</div>
     </footer>
   </div>
-  <div class="modal-rules"></div>
+  <div class="modal-rules">
+    <div class="modal-header">
+      <p class="title">RULES</p>
+    </div>
+    <div class="modal-body">
+      <img src="./images/image-rules.svg" class="image-rules"/>
+    </div>
+    <div class="modal-footer">
+      <div class="btn btn-close" onclick="hideRules(event)"></div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var gameElement = document.querySelector('#game');
+    var scoreNumElement = document.querySelector('.score-num');
+    var step;
+    var rules = {
+      "lizard": {
+        "paper": true,
+        "spock": true
+      },
+      "paper": {
+        "rock": true,
+        "spock": true
+      },
+      "rock": {
+        "lizard": true,
+        "scissors": true
+      },
+      "scissors": {
+        "lizard": true,
+        "paper": true
+      },
+      "spock": {
+        "rock": true,
+        "scissors": true
+      }
+    };
+    var options = ["paper","rock","scissors","lizard","spock"];
+    var limit = 3;
+    var score = 0;
+
+    function showRules(event) {
+      var elem = document.querySelector('.modal-rules');
+      if (elem) {
+        elem.classList.add('show');
+      }
+    }
+    function hideRules(event) {
+      var elem = document.querySelector('.modal-rules');
+      if (elem) {
+        elem.classList.remove('show');
+      }
+    }
+    function choose(event) {
+      var it = event.target;
+      var you, theHouse, increase;
+      you = it.dataset.choose;
+      theHouse = theHouseChoose();
+      increase = compareChoice(you, theHouse);
+      score += increase;
+
+      console.log("You picked:",you);
+      console.log("The House picked:",theHouse);
+      console.log("Result:", increase==0 ? "Draw" : (increase>0 ? "Win" : "Lose"));
+      console.log("");
+
+      scoreNumElement.innerHTML = score.toString();
+    }
+    function theHouseChoose() {
+      var tmp = Math.floor(Math.random() * limit);
+      return options[tmp];
+    }
+    function compareChoice(you, theHouse) {
+      var result;
+      if (you === theHouse) {
+        result = 0;
+      } else {
+        if (rules[you][theHouse]) {
+          result = 1;
+        } else {
+          result = -1;
+        }
+      }
+      return result;
+    }
+    window.addEventListener('load', function() {
+      step = 1;
+      gameElement.classList.add("step-"+step);
+    });
+  </script>
 </body>
 </html>
