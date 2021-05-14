@@ -33,7 +33,20 @@
         <div class="g-btn rock" data-choose="rock" onclick="choose(event)"></div>
         <div class="g-btn scissors" data-choose="scissors" onclick="choose(event)"></div>
       </div>
-      <div class="result"></div>
+      <div class="result">
+        <div class="result-icon">
+          <div class="g-btn void" id="youPicked">
+            <span class="lbl">YOU PICKED</span>
+          </div>
+          <div class="g-btn void" id="theHousePicked">
+            <span class="lbl">THE HOUSE PICKED</span>
+          </div>
+        </div>
+        <div class="result-noti">
+          <div class="noti" id="noti">DRAW</div>
+          <div class="btn btn-again" onclick="playAgain()">PLAY AGAIN</div>
+        </div>
+      </div>
     </div>
     <footer>
       <div class="btn btn-rules" onclick="showRules(event)">RULES</div>
@@ -51,84 +64,6 @@
     </div>
   </div>
 
-  <script type="text/javascript">
-    var gameElement = document.querySelector('#game');
-    var scoreNumElement = document.querySelector('.score-num');
-    var step;
-    var rules = {
-      "lizard": {
-        "paper": true,
-        "spock": true
-      },
-      "paper": {
-        "rock": true,
-        "spock": true
-      },
-      "rock": {
-        "lizard": true,
-        "scissors": true
-      },
-      "scissors": {
-        "lizard": true,
-        "paper": true
-      },
-      "spock": {
-        "rock": true,
-        "scissors": true
-      }
-    };
-    var options = ["paper","rock","scissors","lizard","spock"];
-    var limit = 3;
-    var score = 0;
-
-    function showRules(event) {
-      var elem = document.querySelector('.modal-rules');
-      if (elem) {
-        elem.classList.add('show');
-      }
-    }
-    function hideRules(event) {
-      var elem = document.querySelector('.modal-rules');
-      if (elem) {
-        elem.classList.remove('show');
-      }
-    }
-    function choose(event) {
-      var it = event.target;
-      var you, theHouse, increase;
-      you = it.dataset.choose;
-      theHouse = theHouseChoose();
-      increase = compareChoice(you, theHouse);
-      score += increase;
-
-      console.log("You picked:",you);
-      console.log("The House picked:",theHouse);
-      console.log("Result:", increase==0 ? "Draw" : (increase>0 ? "Win" : "Lose"));
-      console.log("");
-
-      scoreNumElement.innerHTML = score.toString();
-    }
-    function theHouseChoose() {
-      var tmp = Math.floor(Math.random() * limit);
-      return options[tmp];
-    }
-    function compareChoice(you, theHouse) {
-      var result;
-      if (you === theHouse) {
-        result = 0;
-      } else {
-        if (rules[you][theHouse]) {
-          result = 1;
-        } else {
-          result = -1;
-        }
-      }
-      return result;
-    }
-    window.addEventListener('load', function() {
-      step = 1;
-      gameElement.classList.add("step-"+step);
-    });
-  </script>
+  <script type="text/javascript" src="./game.js" async defer></script>
 </body>
 </html>
