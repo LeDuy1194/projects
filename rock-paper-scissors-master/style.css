@@ -183,6 +183,7 @@ header .score-board .score-num {
 }
 .game .result .result-icon .g-btn {
   top: 5%;
+  pointer-events: none;
 }
 .game .result .result-icon .g-btn > .decor,
 .game .result .result-icon .g-btn > .decor::before,
@@ -198,7 +199,7 @@ header .score-board .score-num {
   top: -10%;
   left: -10%;
   transform: scale(0);
-  transition: transform 300ms ease;
+  transition: transform 200ms ease;
 }
 .game .result .result-icon .g-btn > .decor::before {
   content: '';
