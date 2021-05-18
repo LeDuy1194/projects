@@ -1,5 +1,6 @@
 var gameElement = document.getElementById('game');
 var scoreNumElement = document.querySelector('.score-num');
+var youElement = document.getElementById('youPicked');
 var theHouseElement = document.getElementById('theHousePicked');
 var notiElement = document.getElementById('noti');
 var rules = {
@@ -45,9 +46,9 @@ function choose(event) {
     var it = event.target;
     var you, theHouse, increase;
     you = it.dataset.choose;
-    document.getElementById('youPicked').className = "g-btn " + you;
+    youElement.className = "g-btn " + you;
     goToStep(2);
-    
+
     setTimeout(function() {
     theHouse = theHouseChoose();
     theHouseElement.className = "g-btn " + theHouse;
@@ -58,9 +59,11 @@ function choose(event) {
         switch(increase) {
         case 1:
             msg = "YOU WIN";
+            youElement.parentNode.querySelector('.decor').className = 'decor show';
             break;
         case -1:
             msg = "YOU LOSE";
+            theHouseElement.parentNode.querySelector('.decor').className = 'decor show';
             break;
         default: // draw 
         }
@@ -93,9 +96,28 @@ function goToStep(step = 1) {
     gameElement.className = ("game step-"+step.toString());
 }
 function playAgain() {
+    var tmp = document.querySelector('.decor.show');
     goToStep(1);
     theHouseElement.className = 'g-btn void';
+    if (tmp) {
+        tmp.className = 'decor';
+    }
 }
+function resizeScreen(event) {
+    const minHeightForLandscapeView = 1024;
+    var width = window.innerWidth,
+        height = window.innerHeight,
+        max = Math.max(width, height);
+    if (max < minHeightForLandscapeView) {
+        if (width > height) {
+            document.documentElement.classList.add('forced');
+        } else {
+            document.documentElement.classList.remove('forced');
+        }
+    }
+}
+window.addEventListener('resize', resizeScreen);
 window.addEventListener('load', function() {
     goToStep();
+    resizeScreen();
 });
