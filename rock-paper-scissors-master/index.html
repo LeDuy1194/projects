@@ -3,36 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   
+  <base href="./">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+
   <title>Rock, Paper, Scissors</title>
 
-  <link href="./style.css" rel="stylesheet"/>
+  <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-  <!-- <p style="color: white;">Score
-    Rules
-  
-    You Picked
-    The House Picked
-  
-    You Win
-    You Lose
-  
-    Play Again</p>
-  <p style="color: white;">Check font</p> -->
-  <!-- <img src="./images/bg-pentagon.svg" alt=""/>
-  <img src="./images/bg-triangle.svg" alt=""/>
-  <img src="./images/icon-close.svg" alt=""/>
-  <img src="./images/icon-lizard.svg" alt=""/>
-  <img src="./images/icon-paper.svg" alt=""/>
-  <img src="./images/icon-rock.svg" alt=""/>
-  <img src="./images/icon-scissors.svg" alt=""/>
-  <img src="./images/icon-spock.svg" alt=""/>
-  <img src="./images/image-rules-bonus.svg" alt=""/>
-  <img src="./images/image-rules.svg" alt=""/>
-  <img src="./images/logo-bonus.svg" alt=""/>
-  <img src="./images/logo.svg" alt=""/> -->
+  <div class="container">
+    <header>
+      <img src="images/logo.svg" alt="logo" class="logo"/>
+      <div class="score-board">
+        <p class="score-label">SCORE</p>
+        <p class="score-num">0</p>
+      </div>
+    </header>
+    <div class="game" id="game">
+      <div class="bg">
+        <div class="btn-wrapper">
+          <div class="g-btn paper" data-choose="paper" onclick="choose(event)"></div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="g-btn scissors" data-choose="scissors" onclick="choose(event)"></div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="g-btn rock" data-choose="rock" onclick="choose(event)"></div>
+        </div>
+      </div>
+      <div class="result">
+        <div class="result-icon">
+          <div class="btn-wrapper">
+            <div class="decor"></div>
+            <span class="lbl">YOU PICKED</span>
+            <div class="g-btn void" id="youPicked"></div>
+          </div>
+          <div class="btn-wrapper">
+            <div class="decor"></div>
+            <span class="lbl">THE HOUSE PICKED</span>
+            <div class="g-btn void" id="theHousePicked"></div>
+          </div>
+        </div>
+        <div class="result-noti">
+          <div class="noti" id="noti">DRAW</div>
+          <div class="btn btn-again" onclick="playAgain()">PLAY AGAIN</div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="btn btn-rules" onclick="showRules(event)">RULES</div>
+    </footer>
+  </div>
+  <div class="modal-rules" onclick="hideRules(event)">
+    <div class="modal-content" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <p class="title">RULES</p>
+        <div class="btn btn-close" onclick="hideRules(event)"></div>
+      </div>
+      <div class="modal-body">
+        <img src="images/image-rules.svg" class="image-rules"/>
+      </div>
+      <div class="modal-footer">
+        <div class="btn btn-close" onclick="hideRules(event)"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript" src="game.js" async defer></script>
 </body>
 </html>
