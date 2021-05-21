@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes">
+
+  <base href="./">
+
+  <title>Tutorials</title>
+
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/imgs/favicon-32x32.png">
+  <link href="assets/css/style.css" rel="stylesheet"/>
+</head>
+<body class="ligh-theme">
+  <h1>Themes:</h1>
+  <form>
+    <input type="radio" name="theme" value="light" id="t-light" class="radio-theme" checked>&nbsp;<label for="t-light">Light</label><br/>
+    <input type="radio" name="theme" value="dark" id="t-dark" class="radio-theme">&nbsp;<label for="t-dark">Dark</label><br/><br/>
+
+    <label for="tutorial-type">Choose tutorial type:</label><br/>
+    <select id="tutorial-type"></select>
+  </form>
+  <br/>
+
+  <div id="tutorial"></div>
+  <div id="tutorial-result"></div>
+
+  <script type="text/javascript" src="assets/js/index.js"></script>
+</body>
+</html>
