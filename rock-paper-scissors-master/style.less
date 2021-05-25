@@ -10,6 +10,10 @@
 @colorPapperShadow: hsl(230, 89%, 65%);
 @colorRockMain: hsl(349, 70%, 56%);
 @colorRockShadow: hsl(349, 71%, 52%);
+@colorLizardMain: hsl(261, 72%, 63%);
+@colorLizardShadow: hsl(261, 73%, 60%);
+@colorSpockMain: hsl(189, 58%, 57%);
+@colorSpockShadow: hsl(189, 59%, 53%);
 @transitionSetup: opacity 300ms ease-in-out;
 
 * {
@@ -27,6 +31,10 @@
     pointer-events: all;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     min-width: 100vw;
     min-height: 100vh;
@@ -34,6 +42,10 @@ body {
     background-image: linear-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
     font-family: 'Barlow Semi Condensed', sans-serif;
     position: relative;
+    overflow-x: hidden;
+    .bonus-only {
+        display: none;
+    }
 }
 
 html.forced {
@@ -187,6 +199,20 @@ header {
             box-shadow: 0 5px @colorRockShadow;
             &::after {
                 background-image: url('images/icon-rock.svg');
+            }
+        }
+        &.lizard {
+            background-color: @colorLizardMain;
+            box-shadow: 0 5px @colorLizardShadow;
+            &::after {
+                background-image: url('images/icon-lizard.svg');
+            }
+        }
+        &.spock {
+            background-color: @colorSpockMain;
+            box-shadow: 0 5px @colorSpockShadow;
+            &::after {
+                background-image: url('images/icon-spock.svg');
             }
         }
     }
@@ -391,6 +417,60 @@ footer {
     }
 }
 
+body.bonus {
+    .bonus-only {
+        display: block;
+    }
+    .non-bonus {
+        display: none;
+    }
+    .game {
+        .bg-bonus {
+            width: 100%;
+            aspect-ratio: 1;
+            position: relative;
+            background-image: url('images/bg-pentagon.svg');
+            background-size: 80%;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: @transitionSetup;
+            #hide();
+            height: 0;
+            overflow: hidden;
+            .btn-wrapper {
+                width: 30%;
+                &:nth-child(5n+1) {
+                    top: 25%;
+                    right: 0;
+                }
+                &:nth-child(5n+2) {
+                    top: 3%;
+                    left: 35%;
+                }
+                &:nth-child(5n+3) {
+                    bottom: 3%;
+                    right: 15%;
+                }
+                &:nth-child(5n+4) {
+                    bottom: 3%;
+                    left: 15%;
+                }
+                &:nth-child(5n) {
+                    top: 25%;
+                    left: 0;
+                }
+            }
+        }
+        &.step-1 {
+            .bg-bonus {
+                #show();
+                height: auto;
+                overflow: visible;
+            }
+        }
+    }
+}
+
 @media(min-width: 375px) {
     body {
         font-size: 16px;
@@ -533,6 +613,14 @@ footer {
         }
         .modal-footer {
             display: none;
+        }
+    }
+    body.bonus {
+        .game {
+            .bg-bonus {
+                max-width: 400px;
+                margin: auto;
+            }
         }
     }
 }

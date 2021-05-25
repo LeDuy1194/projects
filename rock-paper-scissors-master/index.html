@@ -14,14 +14,15 @@
 <body>
   <div class="container">
     <header>
-      <img src="images/logo.svg" alt="logo" class="logo"/>
+      <img src="images/logo.svg" alt="logo" class="logo non-bonus"/>
+      <img src="images/logo-bonus.svg" alt="logo" class="logo bonus-only"/>
       <div class="score-board">
         <p class="score-label">SCORE</p>
         <p class="score-num">0</p>
       </div>
     </header>
     <div class="game" id="game">
-      <div class="bg">
+      <div class="bg non-bonus">
         <div class="btn-wrapper">
           <div class="g-btn paper" data-choose="paper" onclick="choose(event)"></div>
         </div>
@@ -30,6 +31,23 @@
         </div>
         <div class="btn-wrapper">
           <div class="g-btn rock" data-choose="rock" onclick="choose(event)"></div>
+        </div>
+      </div>
+      <div class="bg-bonus bonus-only">
+        <div class="btn-wrapper">
+          <div class="g-btn paper" data-choose="paper" onclick="choose(event)"></div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="g-btn scissors" data-choose="scissors" onclick="choose(event)"></div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="g-btn rock" data-choose="rock" onclick="choose(event)"></div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="g-btn lizard" data-choose="lizard" onclick="choose(event)"></div>
+        </div>
+        <div class="btn-wrapper">
+          <div class="g-btn spock" data-choose="spock" onclick="choose(event)"></div>
         </div>
       </div>
       <div class="result">
@@ -62,7 +80,8 @@
         <div class="btn btn-close" onclick="hideRules(event)"></div>
       </div>
       <div class="modal-body">
-        <img src="images/image-rules.svg" class="image-rules"/>
+        <img src="images/image-rules.svg" class="image-rules non-bonus"/>
+        <img src="images/image-rules-bonus.svg" class="image-rules bonus-only"/>
       </div>
       <div class="modal-footer">
         <div class="btn btn-close" onclick="hideRules(event)"></div>
