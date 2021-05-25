@@ -116,6 +116,25 @@ function resizeScreen(event) {
         }
     }
 }
+
+if (window.location) {
+    var search = window.location.search;
+    search = search.split('\?');
+    if (search.length > 1) {
+        search = search[1];
+        var query = search.split('\&');
+        var mode;
+        for (var i=0; i<query.length; i++) {
+            if (query[i].includes('mode')) {
+                mode = query[i].split('\=')[1];
+                break;
+            }
+        }
+        if (mode==='bonus') {
+            document.body.className = mode;
+        }
+    }
+}
 window.addEventListener('resize', resizeScreen);
 window.addEventListener('load', function() {
     goToStep();
