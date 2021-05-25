@@ -132,6 +132,7 @@ if (window.location) {
         }
         if (mode==='bonus') {
             document.body.className = mode;
+            limit = 5;
         }
     }
 }
