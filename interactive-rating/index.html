@@ -12,54 +12,57 @@
   <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-  <!-- Rating state start -->
-  <div class="modal in js-modal-rating">
-    <div class="modal-body start">
-      <div class="img-star"><img src="./images/icon-star.svg" alt="star"></div>
-      <p class="title">How did we do?</p>
-      <p class="content">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
-      <form id="ratingForm" class="w-full" onsubmit="submitRating(event)">
-        <div class="block-rating">
-          <label class="rating-opt">
-            <input type="radio" name="rating" value="1"/>
-            <span class="checkmark">1</span>
-          </label>
-          <label class="rating-opt">
-            <input type="radio" name="rating" value="2"/>
-            <span class="checkmark">2</span>
-          </label>
-          <label class="rating-opt">
-            <input type="radio" name="rating" value="3"/>
-            <span class="checkmark">3</span>
-          </label>
-          <label class="rating-opt">
-            <input type="radio" name="rating" value="4"/>
-            <span class="checkmark">4</span>
-          </label>
-          <label class="rating-opt">
-            <input type="radio" name="rating" value="5"/>
-            <span class="checkmark">5</span>
-          </label>
-        </div>
-        <button type="submit" class="btn w-full">Submit</button>
-      </form>
+  <main role="main">
+    <h1 style="opacity: 0; position: absolute; pointer-events: none">Interactive Rating Demo</h1>
+    <!-- Rating state start -->
+    <div class="modal in js-modal-rating" role="contentinfo">
+      <div class="modal-body start">
+        <div class="img-star"><img src="./images/icon-star.svg" alt="star"></div>
+        <p class="title">How did we do?</p>
+        <p class="content">Please let us know how we did with your support request. All feedback is appreciated to help us improve our offering!</p>
+        <form id="ratingForm" class="w-full" onsubmit="submitRating(event)">
+          <div class="block-rating">
+            <label class="rating-opt">
+              <input type="radio" name="rating" value="1"/>
+              <span class="checkmark">1</span>
+            </label>
+            <label class="rating-opt">
+              <input type="radio" name="rating" value="2"/>
+              <span class="checkmark">2</span>
+            </label>
+            <label class="rating-opt">
+              <input type="radio" name="rating" value="3"/>
+              <span class="checkmark">3</span>
+            </label>
+            <label class="rating-opt">
+              <input type="radio" name="rating" value="4"/>
+              <span class="checkmark">4</span>
+            </label>
+            <label class="rating-opt">
+              <input type="radio" name="rating" value="5"/>
+              <span class="checkmark">5</span>
+            </label>
+          </div>
+          <button type="submit" class="btn w-full">Submit</button>
+        </form>
+      </div>
     </div>
-  </div>
-  <!-- Rating state end -->
+    <!-- Rating state end -->
 
-  <!-- Thank you state start -->
-  <div class="modal js-modal-thankyou">
-    <div class="modal-body thankyou">
-      <div class="img-thankyou"><img src="./images/illustration-thank-you.svg" alt="Thank you!"></div>
-      <p class="rating-result">You selected <span class="js-rating-result"></span> out of 5</p>
-      <p class="title">Thank you!</p>
-      <p class="content">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get&nbsp;in&nbsp;touch!</p>
+    <!-- Thank you state start -->
+    <div class="modal js-modal-thankyou" role="contentinfo">
+      <div class="modal-body thankyou">
+        <div class="img-thankyou"><img src="./images/illustration-thank-you.svg" alt="Thank you!"></div>
+        <p class="rating-result">You selected <span class="js-rating-result"></span> out of 5</p>
+        <p class="title">Thank you!</p>
+        <p class="content">We appreciate you taking the time to give a rating. If you ever need more support, don’t hesitate to get&nbsp;in&nbsp;touch!</p>
+      </div>
     </div>
-  </div>
-  <!-- Thank you state end -->
+    <!-- Thank you state end -->
+  </main>
 
 
-  <div class="attribution">
+  <div class="attribution" role="doc-acknowledgments">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">DuyNL</a>.
   </div>
