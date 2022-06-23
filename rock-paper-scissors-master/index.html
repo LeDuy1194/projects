@@ -12,7 +12,8 @@
   <link href="style.css" rel="stylesheet"/>
 </head>
 <body>
-  <div class="container" role="main">
+  <main>
+  <div class="container">
     <header>
       <img src="images/logo.svg" alt="logo" class="logo non-bonus"/>
       <img src="images/logo-bonus.svg" alt="logo" class="logo bonus-only"/>
@@ -73,7 +74,7 @@
       <div class="btn btn-rules" onclick="showRules(event)">RULES</div>
     </footer>
   </div>
-  <div class="modal-rules" onclick="hideRules(event)" role="contentinfo">
+  <div class="modal-rules" onclick="hideRules(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
       <div class="modal-header">
         <p class="title">RULES</p>
@@ -93,6 +94,7 @@
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="#">DuyNL</a>.
   </div>
+  </main>
 
   <script src="game.js" async defer></script>
 </body>
