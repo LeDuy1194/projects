@@ -1,3 +1,4 @@
+// compress: true,
 @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap');
 
 @colorWhite: hsl(0, 0%, 98%);
@@ -33,6 +34,7 @@
 
 html {
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 body {
@@ -469,6 +471,13 @@ body.bonus {
             }
         }
     }
+}
+
+.attribution {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    bottom: 0;
 }
 
 @media(min-width: 375px) {
