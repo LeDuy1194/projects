@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <title>Online HTML Editor</title>
+  <head>
+    <link href="/" />
+    <style>
+      :root {
+        --box-size: 10rem;
+        --animation-time: 4s;
+      }
+      @keyframes boxFlip {
+        16.6666666667% {
+          transform: rotate(0);
+        }
+        33.3333333333% {
+          transform: rotate(0.5turn);
+        }
+        50% {
+          transform: rotate(0.5turn);
+        }
+        66.6666666667% {
+          transform: rotate(0.75turn);
+        }
+        83.3333333333% {
+          transform: rotate(0.75turn);
+        }
+        100% {
+          transform: rotate(1turn);
+        }
+      }
+      body {
+        background: black;
+        color: #ddd;
+        font-size: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .box-flip {
+        position: relative;
+        width: var(--box-size);
+        height: var(--box-size);
+        z-index: -1;
+      }
+      .box-flip::before, .box-flip::after {
+        content: '';
+        width: 50%;
+        height: 50%;
+        background-color: #ddd;
+        position: absolute;
+        left: 50%;
+        transform-origin: bottom left;
+        animation: boxFlip var(--animation-time) infinite;
+      }
+      .box-flip::after {
+        animation-delay: calc(var(--animation-time) / -2);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Online HTML Editor</h1>
+    <div>This is real time online HTML Editor</div>
+    <div class="box-flip">
+    </div>
+  </body>
+</html>
